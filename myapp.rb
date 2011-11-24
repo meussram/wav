@@ -18,14 +18,14 @@ post '/upload' do
     f.write(params['sound'][:tempfile].read)
   end
   file = 'sounds/' + params['sound'][:filename]
-  conf = YAML::load(File.open('./conf/conf_plot_points.yml'))
-  tarace = Waveform.new('./conf/conf_plot_points.yml', file)
-  
-  plots = tarace.generate_plot_points(tarace.file)
-  
-  plots_hash = {"data" => plots}
-  
-  write = tarace.write_graph_plots_to_json("#{conf['data']}#{tarace.file_name.split('/').last}.#{tarace.number_of_points}.json", plots_hash)
+  #conf = YAML::load(File.open('./conf/conf_plot_points.yml'))
+  #tarace = Waveform.new('./conf/conf_plot_points.yml', file)
+  #
+  #plots = tarace.generate_plot_points(tarace.file)
+  #
+  #plots_hash = {"data" => plots}
+  #
+  #write = tarace.write_graph_plots_to_json("#{conf['data']}#{tarace.file_name.split('/').last}.#{tarace.number_of_points}.json", plots_hash)
   
   erb :index
 end
