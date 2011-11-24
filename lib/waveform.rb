@@ -1,11 +1,12 @@
 require 'rubygems'
-require 'chunky_png'
+#require 'chunky_png'
 require 'yaml'
 require 'json'
 
 
 class Waveform
 	require 'wavfile_processor'
+	#include WavfileProcessor
 	
 	attr_accessor(:number_of_points, :file, :file_name)
 	
@@ -80,11 +81,4 @@ class Waveform
 end
 
 
-conf = YAML::load(File.open('/Users/samuelramambasonII/wav/conf/conf_plot_points.yml'))
-tarace = Waveform.new('/Users/samuelramambasonII/wav/conf/conf_plot_points.yml', '/Users/samuelramambasonII/Sounds/3371__suonho__cartoonist_01_LoL_suonho_.wav')
 
-plots = tarace.generate_plot_points(tarace.file)
-
-plots_hash = {"data" => plots}
-
-write = tarace.write_graph_plots_to_json("#{conf['data']}#{tarace.file_name.split('/').last}.#{tarace.number_of_points}.json", plots_hash)
