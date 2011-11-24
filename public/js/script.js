@@ -1,0 +1,79 @@
+$(document).ready(function() {
+	// Onload we start with 800
+	var defaultZoom = $(".default").attr("zoom");
+	fetchData(defaultZoom);
+	
+	$(".zoom").click(function () {
+		//setCurrent($(this));
+		var plotpoints = $(this).attr("zoom");
+		//resizeCanvas(plotpoints);
+		fetchData(plotpoints);
+	});
+});
+
+function setCurrent($e) {
+//	$(".zoom")
+}
+
+
+
+function fetchData(plotpoints) {
+	//resizeCanvas(plotpoints)
+	var options = {
+		lines: { 
+			show: true,
+			//steps:0.1,
+			fill: false,
+			fillColor: "rgb(0,0,0)",
+			lineWidth: 1
+			//fillColor: "rgb(0,0,0)"
+		},
+		selection: { mode: "x" },
+		colors: "#000000",
+		shadowSize: 0,
+		points: { show: false },
+		xaxis: { tickDecimals: 0, tickSize: 0 },
+		legend: {
+			show: true,
+			labelFormatter: null,// or (fn: string, series object -> string)
+			labelBoxBorderColor: "rgb(255,255,255)",
+			//noColumns: number
+			//position: "ne" or "nw" or "se" or "sw"
+			//margin: number of pixels or [x margin, y margin]
+			backgroundColor: null, //or color
+			backgroundOpacity: 0,
+			container: null,// or jQuery object/DOM element/jQuery expression
+		},
+		xaxis: { show: false},
+		yaxis: { show: false},
+		
+		grid: {
+			show: false,
+			color: "rgb(255,255,255)",
+			backgroundColor: "rgb(255,255,255)",
+			borderWidth: 0,
+			borderColor: "rgb(255,255,255)"
+		}
+	};
+	
+	var data = [];
+    var $placeholder = $("#placeholder");
+	var url = window.location;
+	console.log(url)
+	
+	$.ajax({
+        url: "" + "." + plotpoints + ".json",
+        method: 'GET',
+        dataType: 'json',
+        success: onDataReceived
+    });
+
+	function onDataReceived(series) {
+        data = [ series ];
+        $.plot($placeholder, data, options);
+
+    }
+	
+	
+	
+}

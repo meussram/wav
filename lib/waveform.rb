@@ -2,11 +2,12 @@ require 'rubygems'
 #require 'chunky_png'
 require 'yaml'
 require 'json'
+require './lib/wavfile_processor.rb'
 
 
 class Waveform
-	require 'wavfile_processor'
-	#include WavfileProcessor
+	#require 'wavfile_processor'
+	include WavfileProcessor
 	
 	attr_accessor(:number_of_points, :file, :file_name)
 	
