@@ -46,7 +46,7 @@ function fetchData(plotpoints) {
 		},
 		xaxis: { show: false},
 		yaxis: { show: false},
-		
+		selection: { mode: "x" },
 		grid: {
 			show: false,
 			color: "rgb(255,255,255)",
@@ -78,6 +78,25 @@ function fetchData(plotpoints) {
         $.plot($placeholder, data, options);
 	}
 	
-	
+	$placeholder.bind("plotselected", function (event, ranges) {
+        $("#selection").text(ranges.xaxis.from.toFixed(1) + " to " + ranges.xaxis.to.toFixed(1));
+
+        var zoom = $("#zoom").attr("checked");
+        if (zoom)
+            plot = $.plot($placeholder, data,
+                          $.extend(true, {}, options, {
+                              xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                          }));
+    });
+
+	$placeholder.bind("plotunselected", function (event) {
+        $("#selection").text("");
+    });
+    
+    var plot = $.plot($placeholder, data, options);
+
+    $("#clearSelection").click(function () {
+        plot.clearSelection();
+    });
 	
 }
