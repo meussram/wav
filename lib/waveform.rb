@@ -49,9 +49,11 @@ class Waveform
 	
 	def generate_plot_points(file)
 		
+		graph_plots = []
 		plots = [] 
 		indexes = []
 		avg = []
+		x = 0
 		
 		fmt, num_chan, sample_rate, byte_rate, bits_per_sample = WavfileProcessor.read_fmt(file)
 		
@@ -74,7 +76,12 @@ class Waveform
 			 	avg << (temp / divisor)
 			end
 	  end
-		return avg
+		
+		avg.each_index do |i|
+			graph_plots << [x, avg[i].to_i]
+			x+=1
+		end
+		return graph_plots
 	end
 
 end
