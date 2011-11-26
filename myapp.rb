@@ -1,6 +1,6 @@
 # myapp.rb
-#require 'rubygems'
-#require 'sinatra'
+require 'rubygems'
+require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/base' 
 require './lib/waveform.rb'
@@ -8,7 +8,9 @@ require './lib/waveform.rb'
 class MyApp < Sinatra::Base
 	set :static, true
 	set :public, File.dirname(__FILE__) + '/public'
-
+	enable :sessions
+	
+	
   get '/' do
     erb :upload
   end
@@ -32,13 +34,13 @@ class MyApp < Sinatra::Base
     file_name = file.split('/').last
 		
 		densities.each do |d|
-			wav = Waveform.new(d, file)
-			plots = wav.generate_plot_points(wav.file)
+			wave = Waveform.new(d, file)
+			plots = wave.generate_plot_points(wave.file)
 			plots_hash = {"data" => plots}
-			write = wav.write_graph_plots_to_json("#{conf['data']}#{wav.file_name.split('/').last}.#{wav.number_of_points}.json", plots_hash)
+			write = wave.write_graph_plots_to_json("#{conf['data']}#{wave.file_name.split('/').last}.#{wave.number_of_points}.json", plots_hash)
 		end
 		
-    redirect '/wave/'+file_name
+    redirect '/wave/'+ file_name
   end
   
   get '/wave/*' do

@@ -1,15 +1,17 @@
 require 'rubygems'
-#require 'chunky_png'
+require 'chunky_png'
 require 'yaml'
 require 'json'
 require './lib/wavfile_processor.rb'
 
 
 class Waveform
-	#require 'wavfile_processor'
+
 	include WavfileProcessor
 	
+	
 	attr_accessor(:number_of_points, :file, :file_name)
+	
 	
 	def initialize(density, wav_file_name)
 		@number_of_points = density
@@ -22,6 +24,12 @@ class Waveform
 		File.open(file_name, 'w') do |f|
 			f.write plot_points_hash.to_json
 		end
+	end
+	
+	
+	def read_fmt(file)
+		fmt, num_chan, sample_rate, byte_rate, bits_per_sample = WavfileProcessor.read_fmt(file)
+		return fmt, num_chan, sample_rate, byte_rate, bits_per_sample
 	end
 	
 	
