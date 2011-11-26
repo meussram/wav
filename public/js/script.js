@@ -75,7 +75,7 @@ function fetchData(plotpoints) {
 
 	function onDataReceived(series) {
 		data = [ series ];
-        $.plot($placeholder, [d2], options);
+        $.plot($placeholder, data, options);
 	}
 	
 	

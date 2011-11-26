@@ -10,7 +10,7 @@ class MyApp < Sinatra::Base
 	set :public, File.dirname(__FILE__) + '/public'
 
   get '/' do
-    erb :upload
+    erb :index
   end
   
 
