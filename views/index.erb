@@ -4,13 +4,19 @@
 	    <link href="/css/layout.css" rel="stylesheet" type="text/css">
 		<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
 	    <script language="javascript" type="text/javascript" src="/js/jquery.flot.js"></script>
-	    <script language="javascript" type="text/javascript" src="/js/jquery.flot.fillbetween.js"></script>
+	    <script language="javascript" type="text/javascript" src="/js/jquery.flot.selection.js"></script>
 		<script language="javascript" type="text/javascript" src="/js/script.js"></script> 
 	</head>
 	<body>
 	<h1>Wave Plotter</h1>
-	<a href="/upload">Upload another file</a>
+	<form method="post" enctype='multipart/form-data' action="/upload">
+		<input size="30" class="upload_file" type="file" name="sound" />
+		<input type="submit" value="Upload">
+	</form>
 	<div id="zoomlevel">
+		<p><label><input id="zoom" type="checkbox" />Zoom to selection.</label></p>
+		<input id="clearSelection" type="button" value="Clear selection" />
+		<p>You selected: <span id="selection"></span></p>
 		<span class="plus">
 			
 		</span>

@@ -12,7 +12,7 @@ class MyApp < Sinatra::Base
 	
 	
   get '/' do
-    erb :upload
+    erb :index
   end
   
 
