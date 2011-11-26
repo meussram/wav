@@ -13,10 +13,12 @@ class MyApp < Sinatra::Base
     erb :upload
   end
   
+
   get '/upload' do
     erb :upload
   end
   
+
   post '/upload' do
     
     File.open('sounds/' + params['sound'][:filename], "w") do |f|
