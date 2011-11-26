@@ -1,6 +1,6 @@
 canvas_width: 9000
 canvas_height: 250
-data: './data/'
+data: './public/data/'
 
 #file_name: '51210__jobro__cat-fight-slomo.wav'
 #file_name: '81556__johnlavine333__birdloop.wav'
