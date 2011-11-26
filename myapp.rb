@@ -49,4 +49,4 @@ class MyApp < Sinatra::Base
   
 end
 
-MyApp.run!
+MyApp.run!  if $0 == __FILE__
