@@ -60,8 +60,8 @@ function fetchData(plotpoints) {
     var $placeholder = $("#placeholder");
 	var url = window.location.pathname;
 	url = url.split("/")[2];
-	url = "/data/"+url+"."+ plotpoints +".json"
-	console.log(url);
+	url = "/data/"+url+"."+ plotpoints +".json";
+	//console.log(url);
 	
 	$.ajax({
         url: url,
@@ -74,10 +74,9 @@ function fetchData(plotpoints) {
     });
 
 	function onDataReceived(series) {
-        data = [ series ];
-        $.plot($placeholder, data, options);
-		console.log(data);
-    }
+		data = [ series ];
+        $.plot($placeholder, [d2], options);
+	}
 	
 	
 	
