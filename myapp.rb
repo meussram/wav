@@ -6,8 +6,8 @@ require 'sinatra/base'
 require './lib/waveform.rb'
 
 class MyApp < Sinatra::Base
-set :static, true
-set :public, File.dirname(__FILE__) + '/public'
+	set :static, true
+	set :public, File.dirname(__FILE__) + '/public'
 
   get '/' do
     erb :upload
@@ -22,19 +22,20 @@ set :public, File.dirname(__FILE__) + '/public'
     File.open('sounds/' + params['sound'][:filename], "w") do |f|
       f.write(params['sound'][:tempfile].read)
     end
-   
+
+    conf = YAML::load(File.open('./conf/conf_plot_points.yml'))
+		densities = conf['densities']
+		
     file = 'sounds/' + params['sound'][:filename]
     file_name = file.split('/').last
-    #return file
-    conf = YAML::load(File.open('./conf/conf_plot_points.yml'))
-    tarace = Waveform.new('./conf/conf_plot_points.yml', file)
-    
-    plots = tarace.generate_plot_points(tarace.file)
-    
-    plots_hash = {"data" => plots}
-    
-    write = tarace.write_graph_plots_to_json("#{conf['data']}#{tarace.file_name.split('/').last}.#{tarace.number_of_points}.json", plots_hash)
-    
+		
+		densities.each do |d|
+			wav = Waveform.new(d, file)
+			plots = wav.generate_plot_points(wav.file)
+			plots_hash = {"data" => plots}
+			write = wav.write_graph_plots_to_json("#{conf['data']}#{wav.file_name.split('/').last}.#{wav.number_of_points}.json", plots_hash)
+		end
+		
     redirect '/wave/'+file_name
   end
   

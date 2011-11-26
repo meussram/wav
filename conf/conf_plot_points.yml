@@ -1,4 +1,4 @@
-canvas_width: 9000
+densities: [800, 1600, 3200, 4000, 9000, 20000, 100000]
 canvas_height: 250
 data: './public/data/'
 

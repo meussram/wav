@@ -11,9 +11,8 @@ class Waveform
 	
 	attr_accessor(:number_of_points, :file, :file_name)
 	
-	def initialize(conf_file, wav_file_name)
-		conf = YAML::load(File.open(conf_file))	
-		@number_of_points = conf['canvas_width']
+	def initialize(density, wav_file_name)
+		@number_of_points = density
 		@file = File.open(wav_file_name, 'rb')
 		@file_name = wav_file_name 
 	end
@@ -75,7 +74,6 @@ class Waveform
 			 	avg << (temp / divisor)
 			end
 	  end
-		puts "length: #{avg.length}"
 		return avg
 	end
 
