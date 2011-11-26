@@ -64,7 +64,7 @@ function fetchData(plotpoints) {
 	//console.log(url);
 	
 	$.ajax({
-        url: '/data/3371__suonho__cartoonist_01_LoL_suonho_.wav.100000.json',
+        url: url,
         method: 'GET',
         dataType: 'json',
         success: onDataReceived,
@@ -74,10 +74,8 @@ function fetchData(plotpoints) {
     });
 
 	function onDataReceived(series) {
-        var d2 = [[1999, 3.0], [2000, 3.9]];
-		//data = [ series ];
-		//console.log(data);
-        $.plot($("#placeholder"), [d2], options);
+		data = [ series ];
+        $.plot($placeholder, [d2], options);
 	}
 	
 	
