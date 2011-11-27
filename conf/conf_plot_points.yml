@@ -1,19 +1,3 @@
 densities: [800, 1600, 3200, 4000, 9000, 20000, 100000]
 canvas_height: 250
 data: './public/data/'
-
-#file_name: '51210__jobro__cat-fight-slomo.wav'
-#file_name: '81556__johnlavine333__birdloop.wav'
-#file_name: '3372__suonho__cartoonist-02-squeek-suonho.wav'
-#file_name: '18765__reinsamba__evening-in-the-forest.wav'
-#file_name: '2523__rhumphries__rbh-thunder-storm.wav'
-#file_name: '33637__herbertboland__cinematicboomnorm.wav'
-#file_name: '134689__klankbeeld__horror-ghost-03.wav'
-#file_name: '47501__arnaud_coutancier__mach_caf_p5.wav'
-#file_name: '47502__arnaud_coutancier__mach_caf_p9.wav'
-#file_name: '37238__Shades__Gun_Shot_Gun_one_shot_.wav'
-#file_name: '3371__suonho__cartoonist_01_LoL_suonho_.wav'
-#file_name: '3373__suonho__cartoonist_03_micious_suonho_.wav'
-#file_name: '28293__genghis_attenborough__Stridulating_insects_France.wav'
-#file_name: '55013__Speciwoman__chien.wav'
-#file_name: '55015__Speciwoman__partie_de_foot.wav'
