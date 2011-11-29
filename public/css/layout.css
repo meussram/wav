@@ -5,6 +5,14 @@ body {
 	padding:0px;
 }
 
+a {
+	color:black;
+}
+
+a:hover {
+	color:pink;
+}
+
 #right {
 	float:left;
 	height:150px;
