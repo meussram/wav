@@ -1,7 +1,7 @@
 body {
-  font-family: sans-serif;
-  font-size: 16px;
-  margin:0px;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin:0px;
 	padding:0px;
 }
 
@@ -30,10 +30,15 @@ a:hover {
 }
 
 h1 {
+	font-size:45px;
 	margin:0px;
 	padding-top:30px;
 	padding-left:50px;
 	color:pink;
+}
+
+h2 {
+	font-size:35px;
 }
 
 #content {
